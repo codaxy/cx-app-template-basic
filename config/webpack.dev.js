@@ -10,7 +10,19 @@ module.exports = merge(common, {
         rules: [
             {
                 test: /\.scss$/,
-                use: ["style-loader", "css-loader", "sass-loader"]
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sassOptions: {
+                                quietDeps: true,
+                                silenceDeprecations: ['import']
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test: /\.css$/,
@@ -30,8 +42,6 @@ module.exports = merge(common, {
     devServer: {
         hot: true,
         port: 8765,
-        noInfo: false,
-        inline: true,
         historyApiFallback: true
     }
 });

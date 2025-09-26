@@ -1,4 +1,10 @@
+@use 'sass:math';
+
 $cx-include-global-rules: true;
+
+@function cx-divide($a, $b) {
+  @return math.div($a, $b);
+}
 
 @import "~cx/src/variables";
 @import "~cx/src/index";

@@ -3,26 +3,30 @@ module.exports = {
     cacheIdentifier: "v1",
     presets: [
         [
-            "cx-env",
+            "@babel/preset-env",
             {
+                loose: true,
+                modules: false,
+                useBuiltIns: "usage",
+                corejs: 3,
                 targets: {
-                    chrome: 50,
-                    ie: 11,
+                    chrome: 55,
                     firefox: 30,
                     edge: 12,
-                    safari: 9
+                    safari: 9,
                 },
-                corejs: 3,
-                modules: false,
-                loose: true,
-                useBuiltIns: 'usage',
+            },
+        ],
+        [
+            "cx-env",
+            {
                 cx: {
                     imports: {
-                        useSrc: true
-                    }
-                }
-            }
-        ]
+                        useSrc: true,
+                    },
+                },
+            },
+        ],
     ],
-    plugins: []
+    plugins: [],
 };
